@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory
 from flask.ext.scss import Scss
+from jinja2 import Template
 
 app = Flask(__name__)
 
@@ -30,6 +31,12 @@ def test2():
 @app.route("/sanity")
 def sanity():
     return "1"
+
+@app.route("/dev")
+def dev():
+    links = (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
+    template = Template("test.html")
+    return template.render(link=links)
 
 if __name__ == '__main__':
     app.run()
