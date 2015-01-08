@@ -34,7 +34,7 @@ def sanity():
 
 @app.route("/dev")
 def dev():
-    return render_template("test.html")
+    return render_template("links.html")
     #links = (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
     #template = Template(test.html)
     #return template.render(link=links)
