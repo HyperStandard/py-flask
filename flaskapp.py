@@ -39,5 +39,9 @@ def dev():
     #template = Template(test.html)
     #return template.render(link=links)
 
+@app.context_processor
+def inject_links():
+    return (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
+
 if __name__ == '__main__':
     app.run()
