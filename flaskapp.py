@@ -24,11 +24,11 @@ def test():
     return render_template("test.html")
 
 @app.route("/test2")
-def test():
+def test2():
     return render_template("base.html")
 
 @app.route("/sanity")
-def test():
+def sanity():
     return "1"
 
 if __name__ == '__main__':
