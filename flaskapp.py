@@ -27,5 +27,9 @@ def test():
 def test():
     return render_template("base.html")
 
+@app.route("/sanity")
+def test():
+    return "1"
+
 if __name__ == '__main__':
     app.run()
