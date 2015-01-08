@@ -1,7 +1,8 @@
-{% if inject_links() %}
-{% for link in inject_links() %}
-<a href="{{ link[0] }}">{{ link[1] }}</a>
-{% endfor %}
+{% if context.inject_links() %}
+    inject links work
 {% else %}
         nuts
+{% endif %}
+{% if links %}
+        links work
 {% endif %}
