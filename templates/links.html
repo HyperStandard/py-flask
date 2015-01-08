@@ -1,3 +1,7 @@
+{% if inject_links() %}
 {% for link in inject_links() %}
-<a href="{{link[0]}}">{{link[1]}}</a>
+<a href="{{ link[0] }}">{{ link[1] }}</a>
 {% endfor %}
+{% else %}
+        nuts
+{% endif %}
