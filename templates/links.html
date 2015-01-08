@@ -1,7 +1,6 @@
 {% if links %}
-        links work
         {% for link in links %}
-        <a href="{{ link[0] }}">{{ link[1] }}</a>
+        <a href="{{ link[1] }}">{{ link[0] }}</a>
         {% endfor %}
 {% else %}
         links broken

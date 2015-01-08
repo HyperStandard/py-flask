@@ -35,9 +35,6 @@ def sanity():
 @app.route("/dev")
 def dev():
     return render_template("links.html", links=inject_links())
-    #links = (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
-    #template = Template(test.html)
-    #return template.render(link=links)
 
 @app.context_processor
 def inject_links():
