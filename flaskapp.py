@@ -17,6 +17,8 @@ def filter_year(input):
 
 app.config.from_pyfile('flaskapp.cfg')
 
+app.jinja_env.globals['datetime'] = datetime
+
 @app.route('/')
 def index():
     return render_template('index.html')
