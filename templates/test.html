@@ -1,3 +1,4 @@
 {% extends "base.html" %}
 {% block title %}test app{% endblock %}
-{% block footer %} {{ year }}{% endblock %}
+{% block footer %}
+{% if tyear %}{{ tyear }}{% endif %}{% endblock %}
