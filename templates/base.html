@@ -2,12 +2,13 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link href="static/site.css" type="text/css">
+    <link href="static/base.css" type="text/css">
     {% block head %}
     <title>{% block title %}Python/Flask website{% endblock %}</title>
     {% endblock %}
 </head>
 <body>
+<h1>{{ self.title() }}</h1>
     <div id="content">{% block content %}{% include "links.html" ignore missing with context %}{% endblock %}</div>
     <div>{% block footer %}{% endblock %}</div>
 </body>

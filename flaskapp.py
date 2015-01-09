@@ -1,5 +1,6 @@
 import os
-from datetime import datetime
+from datetime import datetime, time, date
+from time import gmtime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory
 from flask.ext.scss import Scss
@@ -7,8 +8,12 @@ from jinja2 import Template
 
 app = Flask(__name__)
 
-#instantiate Sccs object when runs Scss compiling
+#instantiate Sccs object, which compiles Scss files
 Scss(app, static_dir='static', asset_dir='assets')
+
+@app.template_filter('year')
+def filter_year(input):
+    return input + datetime.datetime.today().year
 
 app.config.from_pyfile('flaskapp.cfg')
 
@@ -42,7 +47,7 @@ def page_not_found(e):
 
 @app.context_processor
 def inject_links():
-    return (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
+    return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
 if __name__ == '__main__':
     app.run()

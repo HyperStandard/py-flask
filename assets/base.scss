@@ -1,0 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+
+$heading-font: 'Lato', sans-serif;
+$body-font: 'Merriweather', serif;
+
+h1 {
+    font-family: $heading-font;
+}
