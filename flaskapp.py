@@ -27,7 +27,7 @@ def serveStaticResource(resource):
 
 @app.route("/test")
 def test():
-    return render_template("test.html", links=inject_links())
+    return render_template("test.html", links=inject_links(), year=datetime.datetime.today().year)
 
 @app.route("/test2")
 def test2():
