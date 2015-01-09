@@ -22,11 +22,11 @@ def serveStaticResource(resource):
 
 @app.route("/test")
 def test():
-    return render_template("test.html")
+    return render_template("test.html", links=inject_links())
 
 @app.route("/test2")
 def test2():
-    return render_template("base.html")
+    return render_template("base.html", links=inject_links())
 
 @app.route("/sanity")
 def sanity():
