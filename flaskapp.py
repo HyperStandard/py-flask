@@ -11,10 +11,6 @@ app = Flask(__name__)
 #instantiate Sccs object, which compiles Scss files
 Scss(app, static_dir='static', asset_dir='assets')
 
-@app.template_filter('year')
-def filter_year(input):
-    return input + datetime.datetime.today().year
-
 app.config.from_pyfile('flaskapp.cfg')
 
 app.jinja_env.globals['today'] = datetime.datetime.today
@@ -29,7 +25,7 @@ def serveStaticResource(resource):
 
 @app.route("/test")
 def test():
-    return render_template("test.html", links=inject_links(), tyear=datetime.datetime.today().year)
+    return render_template("test.html", links=inject_links(), tyear=datetime.datetime.today())
 
 @app.route("/test2")
 def test2():
