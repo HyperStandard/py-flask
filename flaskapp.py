@@ -36,6 +36,10 @@ def sanity():
 def dev():
     return render_template("links.html", links=inject_links())
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 @app.context_processor
 def inject_links():
     return (("main", "/"), ("about", "/about"), ("sanity check", "/sanity"))
