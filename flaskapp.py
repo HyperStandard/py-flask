@@ -1,10 +1,10 @@
 import os
-from datetime import datetime, time, date
-from time import gmtime
-from flask import Flask, request, flash, url_for, redirect, \
-     render_template, abort, send_from_directory
+from datetime import datetime
+
+from flask import Flask, render_template, send_from_directory
+
 from flask.ext.scss import Scss
-from jinja2 import Template
+
 
 app = Flask(__name__)
 
@@ -16,8 +16,9 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 
 if not ON_OPENSHIFT:
     print("Running server  locally, app.testing = True")
-    app.testing = True
+    app.debug = True
     Scss(app, static_dir='static', asset_dir='assets')
+    Scss(app)
 
 app.config.from_pyfile('flaskapp.cfg')
 
