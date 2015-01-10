@@ -1,7 +1,10 @@
-{% if links %}
-        {% for link in links %}
+{% if navlinks %}
+        {% for link in navlinks() %}
         <a href="{{ link[1] }}">{{ link[0] }}</a>
         {% endfor %}
 {% else %}
+        {% for link in navlinks() %}
+        <a href="{{ link[1] }}">{{ link[0] }}</a>
+        {% endfor %}
         links broken
 {% endif %}

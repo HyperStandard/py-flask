@@ -13,8 +13,11 @@ Scss(app, static_dir='static', asset_dir='assets')
 
 app.config.from_pyfile('flaskapp.cfg')
 
-app.jinja_env.globals['today'] = datetime.today
+def inject_links():
+    return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
+app.jinja_env.globals['navlinks'] = inject_links
+app.jinja_env.globals['today'] = datetime.today
 
 @app.route('/')
 def index():
@@ -44,10 +47,7 @@ def dev():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-def inject_links():
-    return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
-app.jinja_env.globals['nav_links'] = inject_links
 
 if __name__ == '__main__':
     app.run()
