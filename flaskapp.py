@@ -8,8 +8,16 @@ from jinja2 import Template
 
 app = Flask(__name__)
 
-#instantiate Sccs object, which compiles Scss files
-Scss(app, static_dir='static', asset_dir='assets')
+
+ON_OPENSHIFT = False
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    ON_OPENSHIFT = True
+    print("Running server on OperShift")
+
+if not ON_OPENSHIFT:
+    print("Running server  locally, app.testing = True")
+    app.testing = True
+    Scss(app, static_dir='static', asset_dir='assets')
 
 app.config.from_pyfile('flaskapp.cfg')
 
@@ -37,7 +45,7 @@ def test2():
 
 @app.route("/sanity")
 def sanity():
-    return "1"
+    return "I'm sane 🌹"
 
 @app.route("/dev")
 def dev():
