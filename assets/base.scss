@@ -3,7 +3,19 @@
 
 $heading-font: 'Lato', sans-serif;
 $body-font: 'Merriweather', serif;
+$heading-color: #666666;
 
 h1 {
     font-family: $heading-font;
+    font-size: 24px;
+    color: $heading-color;
+    text-align: center;
+}
+
+#content {
+
+}
+
+#footer {
+
 }

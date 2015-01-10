@@ -13,7 +13,8 @@ Scss(app, static_dir='static', asset_dir='assets')
 
 app.config.from_pyfile('flaskapp.cfg')
 
-app.jinja_env.globals['today'] = datetime.datetime.today
+app.jinja_env.globals['today'] = datetime.today
+
 
 @app.route('/')
 def index():
@@ -25,11 +26,11 @@ def serveStaticResource(resource):
 
 @app.route("/test")
 def test():
-    return render_template("test.html", links=inject_links(), tyear=datetime.datetime.today())
+    return render_template("test.html")
 
 @app.route("/test2")
 def test2():
-    return render_template("base.html", links=inject_links())
+    return render_template("base.html")
 
 @app.route("/sanity")
 def sanity():
@@ -37,15 +38,16 @@ def sanity():
 
 @app.route("/dev")
 def dev():
-    return render_template("links.html", links=inject_links())
+    return render_template("links.html")
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.context_processor
 def inject_links():
     return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
+
+app.jinja_env.globals['nav_links'] = inject_links
 
 if __name__ == '__main__':
     app.run()
