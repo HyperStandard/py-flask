@@ -5,20 +5,21 @@ from flask import Flask, render_template, send_from_directory
 
 from flask.ext.scss import Scss
 
+from flask.ext.assets import Environment, Bundle
+
 
 app = Flask(__name__)
-
 
 ON_OPENSHIFT = False
 if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
-    print("Running server on OperShift")
+    print("Running server on OpenShift")
 
 if not ON_OPENSHIFT:
     print("Running server  locally, app.testing = True")
     app.debug = True
-    Scss(app, static_dir='static', asset_dir='assets')
-    Scss(app)
+    #Scss(app, static_dir='static', asset_dir='assets')
+    #Scss(app)
 
 app.config.from_pyfile('flaskapp.cfg')
 
