@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}404 - Page not found{% endblock %}
+{% block content %}
+    {% if request %}You searched for "{{ request.path[1:] }}", but it's not here! Want to go <a href="/">home</a>? {% endif %}
+{% endblock %}
