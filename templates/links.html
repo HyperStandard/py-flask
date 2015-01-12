@@ -1,5 +1,5 @@
 {% if navlinks %}
-        {% for name, link in navlinks() %}
+        {% for name, link in navlinks().items %}
         <a href="{{ link }}">{{ name }}</a>
         {% endfor %}
 {% else %}
