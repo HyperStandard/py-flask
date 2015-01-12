@@ -17,7 +17,8 @@ if not ON_OPENSHIFT:
 app.config.from_pyfile('flaskapp.cfg')
 
 def inject_links():
-    return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
+    return {"main": "/", "about": "/about", "sanity check": "/sanity" }
+    #return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
 app.jinja_env.globals['navlinks'] = inject_links
 app.jinja_env.globals['today'] = datetime.today

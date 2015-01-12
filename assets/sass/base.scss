@@ -4,6 +4,7 @@
 $heading-font: 'Lato', sans-serif;
 $body-font: 'Merriweather', serif;
 $heading-color: #666666;
+$faded-color: #999999;
 
 h1 {
     font-family: $heading-font;
@@ -21,5 +22,6 @@ body {
 }
 
 #footer {
-
+    position: fixed;
+    color: $faded-color;
 }
