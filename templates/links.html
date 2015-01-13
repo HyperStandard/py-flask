@@ -1,6 +1,6 @@
 {% if navlinks %}
 {% for link in navlinks() %}
-<a href="{{ link.url }}" style="width:{{ 100 // len(navlinks()) }}%">{{ link.name }}</a>
+<a href="{{ link.url }}" style="display:inline-block; width:{{ 100 // len(navlinks()) }}%">{{ link.name }}</a>
 {% endfor %}
 {% else %}
 links broken

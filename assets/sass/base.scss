@@ -39,11 +39,10 @@ body {
 
 #navbar_links {
   background-color: $heading-color;
-  display: inline-block;
-  text-align: center;
 
   a {
     text-decoration: none;
+    text-align: center;
   }
   a:hover {
     color: white;
