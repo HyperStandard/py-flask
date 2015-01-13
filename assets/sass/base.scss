@@ -5,6 +5,7 @@ $heading-font: 'Lato', sans-serif;
 $body-font: 'Merriweather', serif;
 $heading-color: #666666;
 $faded-color: #999999;
+$base-width: 900px;
 
 h1 {
     font-family: $heading-font;
@@ -19,11 +20,35 @@ body {
 }
 
 #content {
+    width: $base-width;
+}
 
+#header {
+    margin-left: auto;
+    margin-right: auto;
+    width: $base-width;
 }
 
 #footer {
     position: fixed;
     bottom: 0px;
     color: $faded-color;
+    background-color: #CCCCCC;
+}
+
+#navbar_links {
+    background-color: $heading-color;
+    a:hover {
+        
+    }
+    a:active {
+
+    }
+    a:link {
+
+    }
+    a:visited {
+
+    }
+
 }
