@@ -1,6 +1,6 @@
 {% if navlinks %}
-        {% for name, link in navlinks().items %}
-        <a href="{{ link }}">{{ name }}</a>
+        {% for link in navlinks() %}
+        <a href="{{ link.url }}">{{ link.name }}</a>
         {% endfor %}
 {% else %}
         links broken

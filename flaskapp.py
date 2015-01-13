@@ -3,6 +3,10 @@ from datetime import datetime
 
 from flask import Flask, render_template, send_from_directory
 
+from links import Link
+
+from collections import OrderedDict
+
 app = Flask(__name__)
 
 ON_OPENSHIFT = False
@@ -17,7 +21,11 @@ if not ON_OPENSHIFT:
 app.config.from_pyfile('flaskapp.cfg')
 
 def inject_links():
-    return {"main": "/", "about": "/about", "sanity check": "/sanity" }
+    #return OrderedDict({"main": "/", "about": "/about", "sanity check": "/sanity" })
+    return (
+        Link("main", "/"),
+        Link("about", "/about"),
+        Link("sanity check", "/sanity"))
     #return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
 app.jinja_env.globals['navlinks'] = inject_links
