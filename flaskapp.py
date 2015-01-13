@@ -33,7 +33,7 @@ app.jinja_env.globals['today'] = datetime.today
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('base.html')
 
 @app.route('/<path:resource>')
 def serveStaticResource(resource):
@@ -42,10 +42,6 @@ def serveStaticResource(resource):
 @app.route("/test")
 def test():
     return render_template("test.html")
-
-@app.route("/test2")
-def test2():
-    return render_template("base.html")
 
 @app.route("/sanity")
 def sanity():
