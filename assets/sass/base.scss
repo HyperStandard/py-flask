@@ -11,54 +11,57 @@ $link-light: #cfcfcf;
 $link-dark: #444444;
 
 h1 {
-    font-size: 24px;
-    color: $heading-color;
-    text-align: center;
+  font-size: 24px;
+  color: $heading-color;
+  text-align: center;
 }
 
 body {
-    font-family: $body-font;
-    background-color: #CCCCCC;
+  font-family: $body-font;
+  background-color: #CCCCCC;
 }
 
 #content {
-    width: $base-width;
+  width: $base-width;
 }
 
 #header {
 
-    font-family: $heading-font;
+  font-family: $heading-font;
 }
 
 #footer {
-    position: fixed;
-    bottom: 0px;
-    color: $faded-color;
-    background-color: #CCCCCC;
+  position: fixed;
+  bottom: 0px;
+  color: $faded-color;
+  background-color: #CCCCCC;
 }
 
 #navbar_links {
-    background-color: $heading-color;
-    a {
-        text-decoration: none;
-    }
-    a:hover {
-        color: white;
-    }
-    a:active {
-        color: white;
-    }
-    a:link {
-        color: $link-light;
-    }
-    a:visited {
-        color: $link-light;
-    }
+  background-color: $heading-color;
+  display: inline-block;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    color: white;
+  }
+  a:active {
+    color: white;
+  }
+  a:link {
+    color: $link-light;
+  }
+  a:visited {
+    color: $link-light;
+  }
 
 }
 
 #container {
-    margin-left: auto;
-    margin-right: auto;
-    width: $base-width;
+  margin-left: auto;
+  margin-right: auto;
+  width: $base-width;
 }

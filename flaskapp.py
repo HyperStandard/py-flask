@@ -20,41 +20,49 @@ if not ON_OPENSHIFT:
 
 app.config.from_pyfile('flaskapp.cfg')
 
+
 def inject_links():
-    #return OrderedDict({"main": "/", "about": "/about", "sanity check": "/sanity" })
+    # return OrderedDict({"main": "/", "about": "/about", "sanity check": "/sanity" })
     return (
         Link("main", "/"),
         Link("about", "/about"),
         Link("sanity check", "/sanity"))
     #return ("main", "/"), ("about", "/about"), ("sanity check", "/sanity")
 
+
 app.jinja_env.globals['navlinks'] = inject_links
 app.jinja_env.globals['today'] = datetime.today
+app.jinja_env.globals['len'] = len
+
 
 @app.route('/')
 def index():
     return render_template('base.html')
 
+
 @app.route('/<path:resource>')
 def serveStaticResource(resource):
     return send_from_directory('static/', resource)
+
 
 @app.route("/test")
 def test():
     return render_template("test.html")
 
+
 @app.route("/sanity")
 def sanity():
     return "I'm sane 🌹"
+
 
 @app.route("/dev")
 def dev():
     return render_template("links.html")
 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
 
 
 if __name__ == '__main__':

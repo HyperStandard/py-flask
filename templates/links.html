@@ -1,7 +1,7 @@
 {% if navlinks %}
-        {% for link in navlinks() %}
-        <a href="{{ link.url }}">{{ link.name }}</a>
-        {% endfor %}
+{% for link in navlinks() %}
+<a href="{{ link.url }}" style="width:{{ 100 // len(navlinks()) }}%">{{ link.name }}</a>
+{% endfor %}
 {% else %}
-        links broken
+links broken
 {% endif %}
