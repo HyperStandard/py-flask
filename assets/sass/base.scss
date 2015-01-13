@@ -7,8 +7,10 @@ $heading-color: #666666;
 $faded-color: #999999;
 $base-width: 900px;
 
+$link-light: #cfcfcf;
+$link-dark: #444444;
+
 h1 {
-    font-family: $heading-font;
     font-size: 24px;
     color: $heading-color;
     text-align: center;
@@ -24,9 +26,8 @@ body {
 }
 
 #header {
-    margin-left: auto;
-    margin-right: auto;
-    width: $base-width;
+
+    font-family: $heading-font;
 }
 
 #footer {
@@ -38,17 +39,26 @@ body {
 
 #navbar_links {
     background-color: $heading-color;
+    a {
+        text-decoration: none;
+    }
     a:hover {
-        
+        color: white;
     }
     a:active {
-
+        color: white;
     }
     a:link {
-
+        color: $link-light;
     }
     a:visited {
-
+        color: $link-light;
     }
 
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    width: $base-width;
 }
