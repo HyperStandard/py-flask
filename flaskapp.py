@@ -1,7 +1,9 @@
 import os
 from datetime import datetime
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, g
+import sqlite3
+from api import PyFlaskApi
 
 from links import Link
 
@@ -47,8 +49,7 @@ def serveStaticResource(resource):
 
 @app.route("/test")
 def test():
-    return render_template("test.html")
-
+    return render_template("ajaxtest.html")
 
 @app.route("/sanity")
 def sanity():
@@ -59,11 +60,34 @@ def sanity():
 def dev():
     return render_template("links.html")
 
+@app.route("/api/<api_call>/<value>")
+def call_api(api_call, value):
+    if api_call is "data":
+        return PyFlaskApi.get_data(value)
+    elif api_call is "user":
+        return PyFlaskApi.get_user(value)
+    else:
+        return "error, unknown api call"
+
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
+def db_connect():
+    return sqlite3.connect('assets/items.db')
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = db_connect()
+    return db
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 if __name__ == '__main__':
     app.run()
