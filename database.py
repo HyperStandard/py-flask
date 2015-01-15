@@ -18,18 +18,23 @@ class DataBase:
         self.cur.execute("create table if not exists chats ("
                     "date text, message text, name text)")
 
-    def get_date(self):
+    @staticmethod
+    def _get_date():
         return datetime.date.isoformat(datetime.datetime.now().date())
 
-    def get_time(self):
+    @staticmethod
+    def _get_time():
         return datetime.time.isoformat(datetime.datetime.now().time())
 
     def add_to_db(self, message, database):
         query = u"INSERT INTO chats ( DATE, TIME, MESSAGE, NAME) VALUES ( '{date:s}', '{time:s}', '{message:s}', 'nobody' )" \
-            .format(**{"date": self.get_date(), "time": self.get_time(), "message": message})
+            .format(**{"date": self._get_date(), "time": self._get_time(), "message": message})
         print(query)
         self.cur.execute(query)
         self.connection.commit()
+
+    def get_from_db(self):
+        pass
 
     def if_table_exists(self):
         pass
