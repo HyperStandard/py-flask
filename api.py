@@ -16,9 +16,14 @@ class PyFlaskApi:
     def get_page(page):
         return render_template("")
 
-    def get_chat(self):
-        lock = Lock()
+    def post_message(user, validation, lock, message):
         with lock:
             lock.acquire()
+
+
+    def get_num_messages(board, last):
+        pass
+
+
 
 
