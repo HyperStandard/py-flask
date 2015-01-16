@@ -1,9 +1,10 @@
 import os
 from datetime import datetime
 
-from flask import Flask, render_template, send_from_directory, g
+from flask import Flask, render_template, send_from_directory, g, request
 import sqlite3
 from api import PyFlaskApi
+from database import DataBase
 
 from links import Link
 
@@ -36,6 +37,16 @@ app.jinja_env.globals['navlinks'] = inject_links
 app.jinja_env.globals['today'] = datetime.today
 app.jinja_env.globals['len'] = len
 
+@app.before_first_request
+def app_startup():
+    g.app_database = DataBase()
+
+
+@app.teardown_appcontext
+def teardown_db(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 @app.route('/')
 def index():
@@ -69,6 +80,14 @@ def call_api(api_call, value):
     else:
         return "error, unknown api call"
 
+@app.route("/api/submit", methods=['POST'] )
+def post_submit_data():
+    message = request.form['message']
+    print(message + ":message")
+    get_db().add_to_db(message, "whateber")
+    return message
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -80,14 +99,8 @@ def db_connect():
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = db_connect()
+        db = g._database = DataBase()
     return db
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
 
 if __name__ == '__main__':
     app.run()

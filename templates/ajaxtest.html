@@ -1,7 +1,9 @@
 {% extends "base.html" %}
-{%  block content %}
+{% block content %}
     <div id="data_holder"></div>
-    <form>
+    <form id="form1">
         <input type="button" value="press" onclick="load_data()">
+        <input type="button" value="press for submit" onclick="post_data('d')">
+        <label for="message_text">whatever</label><input name="message_box" type="text" id="message_text">
     </form>
 {% endblock %}

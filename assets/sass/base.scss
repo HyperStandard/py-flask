@@ -44,17 +44,18 @@ body {
     text-decoration: none;
     text-align: center;
   }
-  a:hover {
-    color: white;
+
+  :active {
+    color: #ffffff;
   }
-  a:active {
-    color: white;
-  }
-  a:link {
+  :link {
     color: $link-light;
   }
-  a:visited {
+  :visited {
     color: $link-light;
+  }
+  :hover {
+    color: #ffffff;
   }
 
 }

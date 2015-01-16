@@ -1,4 +1,4 @@
-from asyncio import Lock
+#from asyncio import Lock
 from flask import render_template
 
 __author__ = 'nonex_000'
@@ -17,8 +17,9 @@ class PyFlaskApi:
         return render_template("")
 
     def post_message(user, validation, lock, message):
-        with lock:
-            lock.acquire()
+       #with lock:
+            #lock.acquire()
+        pass
 
 
 

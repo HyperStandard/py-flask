@@ -6,32 +6,38 @@ __author__ = 'nonex_000'
 
 import sqlite3
 
-class db:
 
+class DataBase:
     def __init__(self):
         DATABASE_NAME = "assets/databases/chats.db3"
 
-        connection = sqlite3.connect(DATABASE_NAME)
+        self.connection = sqlite3.connect(DATABASE_NAME)
 
-        cur = connection.cursor()
-        
-        cur.execute("create table if not exists chats ("
-                    "date text, message text, name text)")
+        self.cur = self.connection.cursor()
 
-    def get_date():
+        self.cur.execute("CREATE TABLE IF NOT EXISTS chats ("
+                         "date TEXT, message TEXT, name TEXT)")
+
+    @staticmethod
+    def _get_date():
         return datetime.date.isoformat(datetime.datetime.now().date())
 
-    def get_time():
+    @staticmethod
+    def _get_time():
         return datetime.time.isoformat(datetime.datetime.now().time())
 
-    def add_to_db(message, database):
+    def add_to_db(self, message, database):
         query = u"INSERT INTO chats ( DATE, TIME, MESSAGE, NAME) VALUES ( '{date:s}', '{time:s}', '{message:s}', 'nobody' )" \
-            .format(**{"date": get_date(), "time": get_time(), "message": message})
+            .format(**{"date": self._get_date(), "time": self._get_time(), "message": message})
         print(query)
-        #cur.execute(query)
-        #cur.execute("INSERT INTO chats ( DATE, TIME, MESSAGE, NAME) VALUES ( '" + get_date() + "', '" + get_time() + "', '" + message + "', 'nobody')")
-    #cur.execute("INSERT INTO chats ( DATE, TIME, MESSAGE, NAME) VALUES ('date', 'time', 'message', 'user'")
+        self.cur.execute(query)
+        self.connection.commit()
 
-    def if_table_exists():
+    def get_from_db(self):
         pass
 
+    def if_table_exists(self):
+        pass
+
+    def close(self):
+        self.cur.close()
