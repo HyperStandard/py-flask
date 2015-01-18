@@ -87,7 +87,16 @@ def post_submit_data():
     get_db().add_to_db(message, "whateber")
     return message
 
+@app.route("/api/poll/<int:info>")
+def get_post_info():
+    return 1
 
+@app.route("/api/async_load")
+def get_async_posts():
+    first = request.args.get['start']
+    last = request.args.get['end']
+
+    return 1
 
 @app.errorhandler(404)
 def page_not_found(e):

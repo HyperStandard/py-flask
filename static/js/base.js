@@ -24,3 +24,11 @@ function post_data(message) {
         message: message
     })
 }
+
+function subscribe() {
+    
+}
+
+function async_load(name, item) {
+    $("name").innerHTML += item;
+}
