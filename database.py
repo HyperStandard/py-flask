@@ -11,7 +11,8 @@ class DataBase:
     def __init__(self):
         DATABASE_NAME = "assets/databases/chats.db3"
 
-        self.connection = sqlite3.connect(DATABASE_NAME)
+        #self.connection = sqlite3.connect(DATABASE_NAME)
+        self.connection = sqlite3.connect(':memory:')
 
         self.cur = self.connection.cursor()
 
